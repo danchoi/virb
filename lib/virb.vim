@@ -70,12 +70,14 @@ func! VirbRefresh()
 endfunc
 
 if !hasmapto('<Plug>VirbRun')
-  nnoremap <buffer> <cr> :call Virb()<cr>
-  vnoremap <buffer> <cr> :call Virb()<cr>
+  " this is global
+  nnoremap <cr> :call Virb()<cr>
+  vnoremap <cr> :call Virb()<cr>
 endif
 
 if !hasmapto('<Plug>VirbRefresh')
-  nnoremap <buffer> <space> :checkt<CR>
+  " this is global
+  nnoremap <space> :checkt<CR>
 endif
 
 
