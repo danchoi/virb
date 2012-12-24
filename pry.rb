@@ -20,6 +20,7 @@ class Fifo
 end
 
 Pry.cli = true
+Pry.color = false
 input = Fifo.new
 #input = StringIO.new("puts 1")
 Pry.input = input
