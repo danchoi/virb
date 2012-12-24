@@ -40,12 +40,6 @@ setlocal nu
 
 " in interactive buffer
 wincmd p
-call setline(1, "# Enter Ruby code here.")
-call setline(2, "# Press ENTER in normal or visual mode to execute a line or selection, or use :[range]Virb")
-call setline(3, "# Press :qal! to quit without saving interactive session worksheet.")
-call setline(4, "")
-call setline(5, "puts \"hello world\"")
-normal 5G
 setlocal nu
 setlocal statusline=%!VirbStatusLine()
 command! -bar -range Virb :<line1>,<line2>call Virb()
