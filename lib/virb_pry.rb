@@ -49,11 +49,16 @@ class Output
     true
   end
 end
-fork do
+
+pgid = Process.getpgid(Process.pid())
+
+pid = fork do
   ENV['TERM'] = 'dumb'
   require 'pry'
-  # This is incomplete
-  # require 'virb/pry'
+
+  out = Output.new
+  $stdout = out
+  $stderr = out
 
   Pry.cli = true
   Pry.color = false
@@ -62,14 +67,14 @@ fork do
   Pry.config.auto_indent = false # turns off ansi control escape sequences
   input = Fifo.new
   Pry.input = input
-  out = Output.new
   Pry.config.output = out
-  $stdout = out
-  $stderr = out
-
   Pry.start(TOPLEVEL_BINDING.eval('self'))
 end
+
 args = ARGV.dup
 vimscript = File.join(File.dirname(__FILE__), 'virb.vim')
 exec("vim -S #{vimscript} #{args.join(' ')}")
+`rm -rf .virb`
+
+Process.waitall
 

@@ -12,4 +12,4 @@ END
   exit
 end
 require 'virb_pry.rb' 
-IRB.start
+
