@@ -110,8 +110,7 @@ module IRB
       original_start ap_path
     end
 
-    exec("vim -S #{vimscript} #{args.join(' ')}")
-
+    exec("vim -S #{vimscript} #{args.join(' ')} && rm -rf .virb && kill 0")
   end
 
   def IRB.original_start(ap_path = nil)
