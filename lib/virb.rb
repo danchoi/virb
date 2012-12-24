@@ -4,6 +4,7 @@
 #       $Revision: 31641 $
 #       by Keiju ISHITSUKA(keiju@ruby-lang.org)
 #
+#   Modified for virb by Daniel Choi dhchoi@gmail.com
 # --
 #
 #
@@ -62,7 +63,6 @@ module IRB
 end
 
 module IRB
-  @RCS_ID='-$Id: irb.rb 31641 2011-05-19 00:07:25Z nobu $-'
 
   class Abort < Exception;end
 
@@ -88,6 +88,32 @@ module IRB
 
   # initialize IRB and start TOP_LEVEL irb
   def IRB.start(ap_path = nil)
+
+    `rm -rf .virb`
+    `mkdir -p .virb`
+    unless File.exist?('.virb/fifo')
+      `mkfifo .virb/fifo`
+    end
+    `touch .virb/session`
+
+    vimscript = File.join(File.dirname(__FILE__), 'virb.vim')
+
+    # strip args so IRB doesn't think it's loading a file
+    args = ARGV.dup
+    while ARGV.shift
+      # pass
+    end
+
+
+    fork do
+      original_start ap_path
+    end
+
+    exec("vim -S #{vimscript} #{args.join(' ')}")
+
+  end
+
+  def IRB.original_start(ap_path = nil)
     $0 = File::basename(ap_path, ".rb") if ap_path
 
     IRB.setup(ap_path)
@@ -113,6 +139,8 @@ module IRB
       irb_at_exit
     end
 #    print "\n"
+
+
   end
 
   def IRB.irb_at_exit
@@ -429,4 +457,3 @@ module IRB
   end
 end
 
-IRB.start
