@@ -72,9 +72,13 @@ Put this in your Gemfile:
       gem 'virb'
     end
 
-and start Rails console as you do normally. You should see the Virb interface
-open, where you can interact with the Ralis console through a Vim buffer and
-see its output in the other Vim buffer.
+and start Rails console as you do normally, with `rails c`. You should see the
+Virb interface open, where you can interact with the Ralis console through a
+Vim buffer and see its output in the other Vim buffer.
+
+If you want to open a worksheet in Virb + Rails console, don't specify it on
+the command line. Open it from within Vim using `:e [file]` after the Virb
+session has started.
 
 If you want to use Virb with Pry and Rails console:
 
@@ -88,7 +92,6 @@ Put this in your Gemfile:
 and start Rails console like this:
 
     VIRB=pry rails c
-
 
 ## Caveats
 
