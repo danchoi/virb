@@ -49,7 +49,12 @@ func! Virb() range
   let s:mtime = getftime(".virb/session")
   let cmd = ":".a:firstline.",".a:lastline."w >> .virb/fifo"
   exec cmd
-  :sleep 400m
+  if $VIRB == 'pry'
+    " a little slower
+    :sleep 600m
+  else
+    :sleep 400m
+  endif
   :call VirbRefresh()
 endfunc
 
