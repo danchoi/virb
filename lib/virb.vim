@@ -28,7 +28,7 @@ function! s:focus_virb_output_window()
 endfunc
 
 function! VirbStatusLine()
-  let line =  "%<*virb* Press <ENTER> to run code on cursorline or in selection.   %r%=%-14.(%l,%c%V%)\ %P"
+  let line =  "%<*virb interactive buffer*   %r%=%-14.(%l,%c%V%)\ %P"
   return line
 endfunc
 
@@ -40,6 +40,12 @@ setlocal nu
 
 " in interactive buffer
 wincmd p
+call setline(1, "# Enter Ruby code here.")
+call setline(2, "# Press ENTER in normal or visual mode to execute a line or selection.")
+call setline(3, "# Press :qal! to quit without saving interactive session worksheet.")
+call setline(4, "")
+call setline(5, "puts \"hello world\"")
+normal 5G
 setlocal nu
 setlocal statusline=%!VirbStatusLine()
 
@@ -57,7 +63,7 @@ func! VirbRefresh()
   ":exec ":checktime ".s:virb_output_bufnr
   :e!
   :normal G
-  syn match irbprompt /^irb\S\+>.*$/ 
+  syn match irbprompt /^irb\S\+\(>\|\*\).*$/ 
   hi def link irbprompt         Comment
   :wincmd p
 endfunc
@@ -66,7 +72,6 @@ if !hasmapto('<Plug>VirbRun')
   nnoremap <buffer> <cr> :call Virb()<cr>
   vnoremap <buffer> <cr> :call Virb()<cr>
 endif
-
 
 if !hasmapto('<Plug>VirbRefresh')
   nnoremap <buffer> <space> :checkt<CR>
