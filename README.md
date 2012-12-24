@@ -14,6 +14,13 @@ similar solutions which let you pop out into Vim from IRB and come back to IRB
 to see the results.  Virb keeps you in Vim at all times, calling IRB behind the
 scenes and fetching is output to display inside Vim.
 
+## Install
+
+    gem install virb
+
+Virb requires Ruby 1.9 and has been tested only on OS X 10.8 and Ubuntu Linux.
+
+
 ## Using Virb 
 
 Start up Virb with the command
