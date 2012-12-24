@@ -19,7 +19,9 @@ class Fifo
     if @io.eof?
       reinit_fifo
     end
-    @io.gets
+    x = @io.gets
+    $stdout.print x
+    x
   end
   def rewind
   end
