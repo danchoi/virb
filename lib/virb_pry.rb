@@ -18,7 +18,9 @@ class Fifo
     if @io.eof?
       reinit_fifo
     end
-    @io.gets
+    line = @io.gets
+    # echo this to stdout
+    line
   end
   def rewind
   end
@@ -47,6 +49,9 @@ class Output
 end
 fork do
   require 'pry'
+  # This is incomplete
+  # require 'virb/pry'
+
   Pry.cli = true
   Pry.color = false
   Pry.config.pager = false
@@ -57,6 +62,7 @@ fork do
   Pry.config.output = out
   $stdout = out
   $stderr = out
+
   Pry.start(TOPLEVEL_BINDING.eval('self'))
 end
 args = ARGV.dup
