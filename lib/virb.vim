@@ -59,6 +59,8 @@ func! VirbRefresh()
   :e!
   :normal G
   syn match irbprompt /^irb\S\+\(>\|\*\).*$/ 
+  " [2] pry(main)>
+  syn match irbprompt /^\[\d\+\] pry.*$/ 
   hi def link irbprompt         Comment
   :wincmd p
 endfunc
