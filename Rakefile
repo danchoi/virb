@@ -21,8 +21,8 @@ end
 desc "build webpage"
 task :build_webpage do
   `cp README.md ../project-webpages/src/virb.README.markdown`
-
-  version = File.read("virb.gemspec")[/s\.version\D+(\d\.\d\.\d)/, 1]
+  require "./lib/virb/version"
+  version = Virb::VERSION
   puts "Version detected: #{version}"
   Dir.chdir "../project-webpages" do
     puts `ruby gen.rb virb #{version}`
