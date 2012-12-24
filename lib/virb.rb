@@ -25,6 +25,7 @@ require "irb/locale"
 STDOUT.sync = true
 
 $outfile = '.virb/session'
+STDERR.reopen ".virb/session" # this prevent logging to cursor location in rails c
 $infifo = '.virb/fifo'
 
 module IRB
