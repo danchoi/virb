@@ -12,7 +12,7 @@ Virb inverts the approach taken by
 the [interactive_editor](https://github.com/jberkel/interactive_editor) gem and
 similar solutions which let you pop out into Vim from IRB and come back to IRB
 to see the results.  Virb keeps you in Vim at all times, calling IRB behind the
-scenes and fetching is output to display inside Vim.
+scenes and fetching IBR's output to display inside Vim.
 
 ## Install
 
