@@ -72,6 +72,6 @@ pid = fork do
 end
 
 args = ARGV.dup
-vimscript = File.join(File.dirname(__FILE__), 'virb.vim')
+vimscript = File.join(File.dirname(__FILE__), '..', 'virb.vim')
 exec("vim -S #{vimscript} #{args.join(' ')} && rm -rf .virb && kill 0")
 

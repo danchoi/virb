@@ -11,5 +11,5 @@ License: MIT
 END
   exit
 end
-require 'virb_pry.rb' 
+require 'virb/pry' 
 
