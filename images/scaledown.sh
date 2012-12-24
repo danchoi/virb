@@ -8,4 +8,4 @@
 
 out=${1%.png}-sm.png
 echo "$1 -> $out"
-convert $1 -scale %50 $out
+convert $1 -scale %75 $out
