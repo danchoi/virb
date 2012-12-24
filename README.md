@@ -98,6 +98,10 @@ and start Rails console like this:
 The normal command line options for `irb` and `pry` do not work with `virb`.
 
 
+## Issues
+
+Please report issues [on the GitHub issue tracker](https://github.com/danchoi/virb/issues).
+
 ## Author
 
 Virb was written by [Daniel Choi](http://danielchoi.com/software), an independent software developer based in Cambridge, Massachusetts.
