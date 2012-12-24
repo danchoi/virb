@@ -5,15 +5,13 @@ unless File.exist?('.virb/fifo')
 end
 `touch .virb/session`
 
-require 'pry'
-
 #`mkfifo fifo`
 class Fifo
   def initialize
     reinit_fifo
   end
   def reinit_fifo
-    fd = IO.sysopen("/virb/fifo")
+    fd = IO.sysopen(".virb/fifo")
     @io = IO.new(fd, 'r')
   end
   def readline(*)
@@ -47,21 +45,20 @@ class Output
     true
   end
 end
-
 fork do
+  require 'pry'
   Pry.cli = true
   Pry.color = false
   Pry.config.pager = false
   input = Fifo.new
-  #input = StringIO.new("puts 1")
   Pry.input = input
-  #out = File.open("pryout", "w")
   out = Output.new
   Pry.config.output = out
   $stdout = out
   $stderr = out
   Pry.start(TOPLEVEL_BINDING.eval('self'))
 end
+args = ARGV.dup
 vimscript = File.join(File.dirname(__FILE__), 'virb.vim')
 exec("vim -S #{vimscript} #{args.join(' ')}")
 
