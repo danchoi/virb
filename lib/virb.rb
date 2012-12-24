@@ -29,10 +29,6 @@ unless File.exist?('.virb/fifo')
 end
 `touch .virb/session`
 
-at_exit {
-  `rm -rf .virb`
-}
-
 STDOUT.sync = true
 
 $outfile = '.virb/session'
