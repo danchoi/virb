@@ -11,5 +11,5 @@ License: MIT
 END
   exit
 end
-require 'virb.rb' 
+require 'virb/default' 
 IRB.start

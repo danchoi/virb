@@ -12,4 +12,4 @@ END
   exit
 end
 require 'virb/pry' 
-
+Virb::Pry.start
