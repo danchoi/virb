@@ -54,8 +54,8 @@ endfunc
 
 func! VirbRefresh()
   :call s:focus_virb_output_window()
-  :exec ":checktime ".s:virb_output_bufnr
-  :normal G
+  ":exec ":checktime ".s:virb_output_bufnr
+  :e!
   :wincmd p
 endfunc
 
