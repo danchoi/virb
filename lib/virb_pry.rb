@@ -50,7 +50,7 @@ fork do
   Pry.cli = true
   Pry.color = false
   Pry.config.pager = false
-  Pry.config.auto_indent = false
+  Pry.config.auto_indent = false # turns off ansi control escape sequences
   input = Fifo.new
   Pry.input = input
   out = Output.new
