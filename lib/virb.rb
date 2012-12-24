@@ -22,6 +22,17 @@ require "irb/ruby-lex"
 require "irb/input-method"
 require "irb/locale"
 
+`rm -rf .virb`
+`mkdir -p .virb`
+unless File.exist?('.virb/fifo')
+  `mkfifo .virb/fifo`
+end
+`touch .virb/session`
+
+at_exit {
+  `rm -rf .virb`
+}
+
 STDOUT.sync = true
 
 $outfile = '.virb/session'
@@ -89,13 +100,6 @@ module IRB
 
   # initialize IRB and start TOP_LEVEL irb
   def IRB.start(ap_path = nil)
-
-    `rm -rf .virb`
-    `mkdir -p .virb`
-    unless File.exist?('.virb/fifo')
-      `mkfifo .virb/fifo`
-    end
-    `touch .virb/session`
 
     vimscript = File.join(File.dirname(__FILE__), 'virb.vim')
 
