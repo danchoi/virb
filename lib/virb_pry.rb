@@ -50,6 +50,7 @@ fork do
   Pry.cli = true
   Pry.color = false
   Pry.config.pager = false
+  Pry.config.auto_indent = false
   input = Fifo.new
   Pry.input = input
   out = Output.new
