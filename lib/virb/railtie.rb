@@ -3,10 +3,14 @@
 module Virb
   class Railtie < Rails::Railtie
     if ENV['VIRB'] == 'pry'
+      require 'pry'
       require 'virb/pry'
       console do
         if Rails::VERSION::MAJOR == 3
           Rails::Console::IRB = Virb::Pry
+          unless defined? Virb::Pry::ExtendCommandBundle
+            Virb::Pry::ExtendCommandBundle = Module.new
+          end
         end  
         if Rails::VERSION::MAJOR == 4
           Rails.application.config.console = Virb::Pry
@@ -18,6 +22,9 @@ module Virb
           TOPLEVEL_BINDING.eval('self').extend ::Rails::ConsoleMethods
         end
       end
+      require "virb/pry_commands"
+      ::Pry.commands.import PryRails::Commands
+
     else
       require 'virb/default'
       console do
