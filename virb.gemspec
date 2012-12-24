@@ -1,8 +1,10 @@
 # -*- encoding: utf-8 -*-
 
+$:.push File.expand_path("../lib", __FILE__)
+require 'virb/version'
 Gem::Specification.new do |s|
   s.name        = "virb"
-  s.version     = '0.0.1'
+  s.version     = Virb::VERSION
   s.platform    = Gem::Platform::RUBY
   s.required_ruby_version = '>= 1.9.0'
 
@@ -14,7 +16,7 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "virb"
 
-  s.files         = ['bin/virb', 'lib/virb.rb', 'lib/virb.vim', 'lib/virb/railtie.rb', 'virb.gemspec', 'README.md'] 
+  s.files         = ['bin/virb', 'lib/virb.rb', 'lib/virb.vim', 'lib/virb/railtie.rb', 'virb.gemspec', 'lib/virb/version.rb', 'README.md'] 
   s.executables   = ['virb']
   # s.require_paths = ["lib"]
 end
