@@ -25,6 +25,9 @@ module Virb
       require "virb/pry_commands"
       ::Pry.commands.import PryRails::Commands
 
+      # do this to prevent the sql output from going to vim interactive buffer
+      STDERR.reopen("/dev/null")
+
     else
       require 'virb/default'
       console do
