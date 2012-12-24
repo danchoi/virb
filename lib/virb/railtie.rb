@@ -19,6 +19,7 @@ module Virb
         end
       end
     else
+      require 'virb/default'
       console do
         if Rails::VERSION::MAJOR == 3
           Rails::Console::IRB = IRB
