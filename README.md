@@ -5,8 +5,8 @@ Virb is a Vim shell for IRB, Rails console, and Pry.
 ## Motivation
 
 The IRB is Ruby's interactive REPL. IRB is a very handy tool, but its
-text-editing capabilities are limited. Virb wraps IRB in a Vim session and
-gives you convenient ways to evaluate Ruby code from Vim.
+text-editing capabilities are limited. Virb wraps an IRB session in a Vim
+session and gives you convenient ways to evaluate Ruby code from Vim.
 
 Virb inverts the approach taken by
 the [interactive_editor](https://github.com/jberkel/interactive_editor) gem and
