@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "virb"
 
-  s.files         = ['bin/virb', 'lib/virb.rb', 'lib/virb.vim', 'lib/virb/railtie.rb', 'virb.gemspec', 'lib/virb/version.rb', 'README.md'] 
+  s.files  = `git ls-files`.split("\n")
   s.executables   = ['virb']
   # s.require_paths = ["lib"]
 end

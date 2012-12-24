@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+if %w{ -h --help --version -v }.include?(ARGV[0])
+  require 'virb/version'
+  puts <<END
+virb #{Virb::VERSION}
+
+For instructions, please visit http://github.com/danchoi/virb
+Author: Daniel Choi 
+License: MIT
+END
+  exit
+end
+require 'virb_pry.rb' 
+IRB.start
