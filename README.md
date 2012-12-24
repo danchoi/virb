@@ -2,8 +2,8 @@
 
 Virb is an interactive Vim mode for IRB, Rails console, and Pry.
 
-![screen1](https://raw.github.com/danchoi/virb/master/images/virb1.png)
-![screen2](https://raw.github.com/danchoi/virb/master/images/virb2.png)
+![screen1](https://raw.github.com/danchoi/virb/master/images/virb1-sm.png)
+![screen2](https://raw.github.com/danchoi/virb/master/images/virb2-sm.png)
 
 ## Motivation
 
