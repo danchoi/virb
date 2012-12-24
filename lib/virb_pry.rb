@@ -40,7 +40,7 @@ class Output
     @out.puts s
   end
   def write s
-    puts s
+    @out.write s
   end
   def flush
     @out.flush
