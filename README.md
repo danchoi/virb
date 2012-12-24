@@ -7,15 +7,16 @@ Virb is a Vim shell for IRB, Rails console, and Pry.
 
 Start up Virb with the command
 
-    virb
+    virb [file]
 
-
+The optional `file` is a text file that contains Ruby code that you
+would like to run interactively.
 
 ## Using Virb with Pry
 
 Make sure you have the `pry` gem installed. Then you can run this:
 
-    virb-pry
+    virb-pry [file]
 
 When virb opens, you should be able to send your code for evaluation to Pry and
 get Pry output in the virb session buffer.
@@ -48,5 +49,15 @@ and start Rails console like this:
     VIRB=pry rails c
 
 
+## Caveats
+
+The normal command line options for `irb` and `pry` do not work with `virb`.
 
 
+## Author
+
+Virb was written by [Daniel Choi](http://danielchoi.com/software), an independent software developer based in Cambridge, Massachusetts.
+
+* [GitHub](http://github.com/danchoi)
+* [Twitter](http://twitter.com/danchoi)
+* I am available for short to medium-term consulting projects: [Email](mailto:dhchoi@gmail.com)
