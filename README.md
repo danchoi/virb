@@ -1,6 +1,6 @@
 # Virb
 
-Virb is a Vim shell for IRB, Rails console, and Pry.
+Virb is a Vim REPL environment for IRB, Rails console, and Pry.
 
 ## Motivation
 
@@ -18,7 +18,8 @@ scenes and fetching IBR's output to display inside Vim.
 
     gem install virb
 
-Virb requires Ruby 1.9 and has been tested only on OS X 10.8 and Ubuntu Linux.
+Virb requires Ruby 1.9 and Vim 7.2 or above. Virb has been tested only on OS X
+10.8 and Ubuntu Linux.
 
 
 ## Using Virb 
