@@ -36,7 +36,7 @@ at_exit {
 STDOUT.sync = true
 
 $outfile = '.virb/session'
-STDERR.reopen ".virb/session" # this prevent logging to cursor location in rails c
+STDERR.reopen "/dev/null" # this prevent logging to cursor location in rails c
 $infifo = '.virb/fifo'
 
 module IRB

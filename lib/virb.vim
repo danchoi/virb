@@ -56,6 +56,7 @@ func! VirbRefresh()
   :call s:focus_virb_output_window()
   ":exec ":checktime ".s:virb_output_bufnr
   :e!
+  :normal G
   :wincmd p
 endfunc
 
@@ -69,6 +70,4 @@ if !hasmapto('<Plug>VirbRefresh')
   nnoremap <buffer> <space> :checkt<CR>
 endif
 
-" need a binding to update the session buffer manually
-"
 " TODO filetype detect *.virb to automatically turn o
