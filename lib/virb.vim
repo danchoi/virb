@@ -57,6 +57,8 @@ func! VirbRefresh()
   ":exec ":checktime ".s:virb_output_bufnr
   :e!
   :normal G
+  syn match irbprompt /^irb\S\+>.*$/ 
+  hi def link irbprompt         Comment
   :wincmd p
 endfunc
 
