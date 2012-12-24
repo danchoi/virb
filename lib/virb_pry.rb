@@ -14,13 +14,12 @@ class Fifo
     fd = IO.sysopen(".virb/fifo")
     @io = IO.new(fd, 'r')
   end
-  def readline(*)
+  def readline(current_prompt)
+    $stdout.print current_prompt
     if @io.eof?
       reinit_fifo
     end
-    line = @io.gets
-    # echo this to stdout
-    line
+    @io.gets
   end
   def rewind
   end
@@ -42,12 +41,14 @@ class Output
     puts s
   end
   def flush
+    @out.flush
   end
   def tty?
     true
   end
 end
 fork do
+  ENV['TERM'] = 'dumb'
   require 'pry'
   # This is incomplete
   # require 'virb/pry'
@@ -55,6 +56,7 @@ fork do
   Pry.cli = true
   Pry.color = false
   Pry.config.pager = false
+  Pry.config.print = Pry::SIMPLE_PRINT
   Pry.config.auto_indent = false # turns off ansi control escape sequences
   input = Fifo.new
   Pry.input = input
