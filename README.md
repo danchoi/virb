@@ -1,6 +1,6 @@
 # Virb
 
-Virb is a Vim REPL environment for IRB, Rails console, and Pry.
+Virb is a Vim environment for IRB, Rails console, and Pry.
 
 ## Motivation
 
