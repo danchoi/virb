@@ -2,6 +2,9 @@
 
 Virb is an interactive Vim mode for IRB, Rails console, and Pry.
 
+![screen1](https://raw.github.com/danchoi/virb/master/images/virb1.png)
+![screen2](https://raw.github.com/danchoi/virb/master/images/virb2.png)
+
 ## Motivation
 
 The IRB is Ruby's interactive REPL. IRB is a very handy tool, but its
