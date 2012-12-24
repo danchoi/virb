@@ -2,6 +2,17 @@
 
 Virb is a Vim shell for IRB, Rails console, and Pry.
 
+## Motivation
+
+The IRB is Ruby's interactive REPL. IRB is a very handy tool, but its
+text-editing capabilities are limited. Virb wraps IRB in a Vim session and
+gives you convenient ways to evaluate Ruby code from Vim.
+
+Virb inverts the approach taken by
+the [interactive_editor](https://github.com/jberkel/interactive_editor) gem and
+similar solutions which let you pop out into Vim from IRB and come back to IRB
+to see the results.  Virb keeps you in Vim at all times, calling IRB behind the
+scenes and fetching is output to display inside Vim.
 
 ## Using Virb 
 
@@ -11,6 +22,25 @@ Start up Virb with the command
 
 The optional `file` is a text file that contains Ruby code that you
 would like to run interactively.
+
+Virb opens 2 Vim buffers. The bottom buffer is the interactive buffer, 
+where you can edit Ruby code and then send it to the underlying interactive
+Ruby session for evaluation. The top buffer is the output buffer, where you 
+can see the IRB session you are controlling from the interactive buffer.
+
+To evaluate code in the interactive buffer:
+
+To evaluate a line of code, put the cursor on it, and press ENTER in normal mode.
+
+To evaluate several lines of code, you can either
+
+1. select the lines in Vim's visual mode, and press ENTER to evaluate them;
+2. use an ed-style range command: `:[range]Virb`
+
+If IRB takes too long (more than about half a second) to evaluate your code,
+you may need to manually force the session buffer to update itself. You can
+force an update by pressing SPACE in normal mode.
+
 
 ## Using Virb with Pry
 
