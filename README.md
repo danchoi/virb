@@ -97,6 +97,8 @@ and start Rails console like this:
 
 The normal command line options for `irb` and `pry` do not work with `virb`.
 
+Also, `irb` extensions and `.irbrc` settings that introduce output coloring may
+garble the evaluated output in Virb. For best results, remove these extensions.
 
 ## Issues
 
