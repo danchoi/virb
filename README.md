@@ -106,8 +106,8 @@ Please report issues [on the GitHub issue tracker](https://github.com/danchoi/vi
 
 ## Tip
 
-You may want try adding another Vim plugin called
-[ri.vim](https://github.com/danchoi/ri.vim), which lets you perform
+You may want try adding a Vim plugin called
+[ri.vim](https://github.com/danchoi/ri.vim) to perform
 Ruby documentation lookups from the Vim workspace. Virb and ri.vim are
 compatible, and written by the same author.
 
