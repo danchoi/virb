@@ -104,6 +104,13 @@ garble the evaluated output in Virb. For best results, remove these extensions.
 
 Please report issues [on the GitHub issue tracker](https://github.com/danchoi/virb/issues).
 
+## Tip
+
+You may want try adding another Vim plugin called
+[ri.vim](http://danielchoi.com/software/ri_vim.html), which lets you perform
+Ruby documentation lookups from the Vim workspace. Virb and ri.vim are
+compatible, and written by the same author.
+
 ## Author
 
 Virb was written by [Daniel Choi](http://danielchoi.com/software), an independent software developer based in Cambridge, Massachusetts.
