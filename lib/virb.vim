@@ -43,6 +43,7 @@ wincmd p
 setlocal nu
 setlocal statusline=%!VirbStatusLine()
 command! -bar -range Virb :<line1>,<line2>call Virb()
+set ft=ruby
 
 " main execution function
 func! Virb() range
