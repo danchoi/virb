@@ -32,26 +32,6 @@ function! VirbStatusLine()
   return line
 endfunc
 
-function! VirbInteractive()
-  setlocal nu
-  setlocal statusline=%!VirbStatusLine()
-  command! -bar -range Virb :<line1>,<line2>call Virb()
-  set ft=ruby
-  nnoremap <buffer> <cr> :call Virb()<cr>
-  vnoremap <buffer> <cr> :call Virb()<cr>
-  nnoremap <buffer> <space> :checkt<CR>
-endfunc
-
-split! .virb/session
-setlocal autoread
-let s:virb_output_bufnr = bufnr('%')
-setlocal nomodifiable
-setlocal nu
-
-" set up interactive buffer
-wincmd p
-call VirbInteractive()
-
 " main execution function
 func! Virb() range
   let s:mtime = getftime(".virb/session")
@@ -78,4 +58,24 @@ func! VirbRefresh()
   :wincmd p
 endfunc
 
+function! VirbInteractive()
+  setlocal nu
+  setlocal statusline=%!VirbStatusLine()
+  command! -bar -range Virb :<line1>,<line2>call Virb()
+  set ft=ruby
+  nnoremap <buffer> <cr> :call Virb()<cr>
+  vnoremap <buffer> <cr> :call Virb()<cr>
+  nnoremap <buffer> <space> :checkt<CR>
+endfunc
 
+split! .virb/session
+setlocal autoread
+let s:virb_output_bufnr = bufnr('%')
+setlocal nomodifiable
+setlocal nu
+
+" set up interactive buffer
+wincmd p
+call VirbInteractive()
+
+:au BufNewFile,BufRead *.rb call VirbInteractive()
