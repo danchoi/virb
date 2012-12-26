@@ -32,18 +32,25 @@ function! VirbStatusLine()
   return line
 endfunc
 
+function! VirbInteractive()
+  setlocal nu
+  setlocal statusline=%!VirbStatusLine()
+  command! -bar -range Virb :<line1>,<line2>call Virb()
+  set ft=ruby
+  nnoremap <buffer> <cr> :call Virb()<cr>
+  vnoremap <buffer> <cr> :call Virb()<cr>
+  nnoremap <buffer> <space> :checkt<CR>
+endfunc
+
 split! .virb/session
 setlocal autoread
 let s:virb_output_bufnr = bufnr('%')
 setlocal nomodifiable
 setlocal nu
 
-" in interactive buffer
+" set up interactive buffer
 wincmd p
-setlocal nu
-setlocal statusline=%!VirbStatusLine()
-command! -bar -range Virb :<line1>,<line2>call Virb()
-set ft=ruby
+call VirbInteractive()
 
 " main execution function
 func! Virb() range
@@ -70,16 +77,5 @@ func! VirbRefresh()
   hi def link irbprompt         Comment
   :wincmd p
 endfunc
-
-if !hasmapto('<Plug>VirbRun')
-  " this is global
-  nnoremap <cr> :call Virb()<cr>
-  vnoremap <cr> :call Virb()<cr>
-endif
-
-if !hasmapto('<Plug>VirbRefresh')
-  " this is global
-  nnoremap <space> :checkt<CR>
-endif
 
 
