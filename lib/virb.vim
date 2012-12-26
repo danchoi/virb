@@ -58,6 +58,14 @@ func! VirbRefresh()
   :wincmd p
 endfunc
 
+func VirbInterrupt()
+  " this kill -INT is overbroad, sending INT to all virb processes but we can improve it later
+  let cmd = "ps | grep bin\/virb$ | awk '{ print $1}' | xargs kill -INT"
+  call system(cmd)
+  sleep 400m
+  call VirbRefresh()
+endfunc 
+
 function! VirbInteractive()
   setlocal nu
   setlocal statusline=%!VirbStatusLine()
@@ -66,6 +74,8 @@ function! VirbInteractive()
   nnoremap <buffer> <cr> :call Virb()<cr>
   vnoremap <buffer> <cr> :call Virb()<cr>
   nnoremap <buffer> <space> :checkt<CR>
+  nnoremap <buffer> <c-c> :call VirbInterrupt()<CR>
+  nnoremap <buffer> <c-c> :call VirbInterrupt()<CR>
 endfunc
 
 split! .virb/session
