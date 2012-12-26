@@ -52,6 +52,8 @@ If IRB takes too long (more than about half a second) to evaluate your code,
 you may need to manually force the session buffer to update itself. You can
 force an update by pressing SPACE in normal mode.
 
+After you start up Virb, you can also monitor the IRB session you are driving
+by tailing a file called `.virb/session` (relative to the working directory).
 
 ## Using Virb with Pry
 
