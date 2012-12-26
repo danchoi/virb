@@ -75,7 +75,6 @@ function! VirbInteractive()
   vnoremap <buffer> <cr> :call Virb()<cr>
   nnoremap <buffer> <space> :checkt<CR>
   nnoremap <buffer> <c-c> :call VirbInterrupt()<CR>
-  nnoremap <buffer> <c-c> :call VirbInterrupt()<CR>
 endfunc
 
 split! .virb/session
