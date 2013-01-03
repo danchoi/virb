@@ -68,7 +68,6 @@ endfunc
 
 function! VirbInteractive()
   setlocal nu
-  setlocal statusline=%!VirbStatusLine()
   command! -bar -range Virb :<line1>,<line2>call Virb()
   set ft=ruby
   nnoremap <buffer> <cr> :call Virb()<cr>
@@ -86,5 +85,8 @@ setlocal nu
 " set up interactive buffer
 wincmd p
 call VirbInteractive()
+" just in the first buffer window
+setlocal statusline=%!VirbStatusLine()
 
 :au BufNewFile,BufRead *.rb call VirbInteractive()
+
