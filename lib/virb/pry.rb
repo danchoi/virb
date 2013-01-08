@@ -6,13 +6,6 @@ module Virb
       end
       def reinit_fifo
 
-        `rm -rf .virb`
-        `mkdir -p .virb`
-        unless File.exist?('.virb/fifo')
-          `mkfifo .virb/fifo`
-        end
-        `touch .virb/session`
-
         fd = IO.sysopen(".virb/fifo")
         @io = IO.new(fd, 'r')
       end
@@ -54,6 +47,13 @@ module Virb
     end
 
     def self.start
+      `rm -rf .virb`
+      `mkdir -p .virb`
+      unless File.exist?('.virb/fifo')
+        `mkfifo .virb/fifo`
+      end
+      `touch .virb/session`
+
       pgid = Process.getpgid(Process.pid())
 
       pid = fork do
