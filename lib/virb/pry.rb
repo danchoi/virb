@@ -1,10 +1,3 @@
-`rm -rf .virb`
-`mkdir -p .virb`
-unless File.exist?('.virb/fifo')
-  `mkfifo .virb/fifo`
-end
-`touch .virb/session`
-
 module Virb
   class Pry
     class Fifo
@@ -12,12 +5,21 @@ module Virb
         reinit_fifo
       end
       def reinit_fifo
+
+        `rm -rf .virb`
+        `mkdir -p .virb`
+        unless File.exist?('.virb/fifo')
+          `mkfifo .virb/fifo`
+        end
+        `touch .virb/session`
+
         fd = IO.sysopen(".virb/fifo")
         @io = IO.new(fd, 'r')
       end
       def readline(current_prompt)
         $stdout.print current_prompt
         if @io.eof?
+          @io.close
           reinit_fifo
         end
         x = @io.gets

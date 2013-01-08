@@ -22,13 +22,6 @@ require "irb/ruby-lex"
 require "irb/input-method"
 require "irb/locale"
 
-`rm -rf .virb`
-`mkdir -p .virb`
-unless File.exist?('.virb/fifo')
-  `mkfifo .virb/fifo`
-end
-`touch .virb/session`
-
 STDOUT.sync = true
 
 $outfile = '.virb/session'
@@ -164,6 +157,14 @@ module IRB
   #
   class Irb
     def initialize(workspace = nil, input_method = StdioInputMethod.new , output_method = nil)
+
+      `rm -rf .virb`
+      `mkdir -p .virb`
+      unless File.exist?('.virb/fifo')
+        `mkfifo .virb/fifo`
+      end
+      `touch .virb/session`
+
 
       # input_method is hard to override
 
