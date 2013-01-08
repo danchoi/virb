@@ -89,6 +89,12 @@ module IRB
 
   # initialize IRB and start TOP_LEVEL irb
   def IRB.start(ap_path = nil)
+    `rm -rf .virb`
+    `mkdir -p .virb`
+    unless File.exist?('.virb/fifo')
+      `mkfifo .virb/fifo`
+    end
+    `touch .virb/session`
 
     vimscript = File.join(File.dirname(__FILE__), '..', 'virb.vim')
 
@@ -157,14 +163,6 @@ module IRB
   #
   class Irb
     def initialize(workspace = nil, input_method = StdioInputMethod.new , output_method = nil)
-
-      `rm -rf .virb`
-      `mkdir -p .virb`
-      unless File.exist?('.virb/fifo')
-        `mkfifo .virb/fifo`
-      end
-      `touch .virb/session`
-
 
       # input_method is hard to override
 
