@@ -3,9 +3,9 @@
 module Virb
   class Railtie < Rails::Railtie
     if ENV['VIRB'] == 'pry'
-      require 'pry'
-      require 'virb/pry'
       console do
+        require 'pry'
+        require 'virb/pry'
         if Rails::VERSION::MAJOR == 3
           Rails::Console::IRB = Virb::Pry
           unless defined? Virb::Pry::ExtendCommandBundle
@@ -21,16 +21,14 @@ module Virb
           require 'rails/console/helpers'
           TOPLEVEL_BINDING.eval('self').extend ::Rails::ConsoleMethods
         end
+        # do this to prevent the sql output from going to vim interactive buffer
+        STDERR.reopen("/dev/null")
+        require "virb/pry_commands"
+        ::Pry.commands.import PryRails::Commands
       end
-      require "virb/pry_commands"
-      ::Pry.commands.import PryRails::Commands
-
-      # do this to prevent the sql output from going to vim interactive buffer
-      STDERR.reopen("/dev/null")
-
     else
-      require 'virb/default'
       console do
+        require 'virb/default'
         if Rails::VERSION::MAJOR == 3
           Rails::Console::IRB = IRB
         end  
