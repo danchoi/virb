@@ -66,20 +66,27 @@ func VirbInterrupt()
   call VirbRefresh()
 endfunc 
 
+func! s:clearInteractiveBuffer() 
+  :call s:focus_virb_output_window()
+  %d
+  :wincmd p
+endfunc
+
 function! VirbInteractive()
   setlocal nu
   command! -bar -range Virb :<line1>,<line2>call Virb()
   set ft=ruby
+  set bt=nowrite
   nnoremap <buffer> <cr> :call Virb()<cr>
   vnoremap <buffer> <cr> :call Virb()<cr>
   nnoremap <buffer> <space> :checkt<CR>
   nnoremap <buffer> <c-c> :call VirbInterrupt()<CR>
+  nnoremap <buffer> <c-l> :call <SID>clearInteractiveBuffer()<CR>
 endfunc
 
 split! .virb/session
 setlocal autoread
 let s:virb_output_bufnr = bufnr('%')
-setlocal nomodifiable
 setlocal nu
 
 " set up interactive buffer

@@ -48,6 +48,8 @@ To evaluate several lines of code, you can either
 1. select the lines in Vim's visual mode, and press ENTER to evaluate them;
 2. use an ed-style range command: `:[range]Virb`
 
+To clear the evaluation output butter, press <c-l>.
+
 If IRB takes too long (more than about half a second) to evaluate your code,
 you may need to manually force the session buffer to update itself. You can
 force an update by pressing SPACE in normal mode.
