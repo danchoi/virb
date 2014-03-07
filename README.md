@@ -80,6 +80,22 @@ and start Rails console as you do normally, with `rails c`. You should see the
 Virb interface open, where you can interact with the Ralis console through a
 Vim buffer and see its output in the other Vim buffer.
 
+If you don't want to make `virb` default dependency in the Gemfile, you can have
+Bundler load virb only if an environment variable is present. E.g.,
+
+    group :virb do
+      gem 'virb'
+    end
+
+    # and add this to config/application.rb
+
+    if ENV['VIRB_ENABLED'] == 'true'
+      console do
+         Bundler.require :virb
+         require 'virb/default'
+      end
+    end
+
 If you want to open a worksheet in Virb + Rails console, don't specify it on
 the command line. Open it from within Vim using `:e [file]` after the Virb
 session has started.
